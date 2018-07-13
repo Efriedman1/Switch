@@ -1,82 +1,60 @@
 //
-//  GameScene.swift
+//  LevelTwo.swift
 //  Switch
 //
-//  Created by Eric Friedman on 7/11/18.
+//  Created by Eric Friedman on 7/12/18.
 //  Copyright © 2018 EF Enterprises. All rights reserved.
 //
 
+import UIKit
 import SpriteKit
-import GameplayKit
 
-enum PlayColors {
+enum PlayColors2 {
     static let colors = [
         UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1.0),
         UIColor(red: 241/255, green: 196/255, blue: 15/255, alpha: 1.0),
         UIColor(red: 46/255, green: 204/255, blue: 113/255, alpha: 1.0),
-        UIColor(red: 52/255, green: 152/255, blue: 219/255, alpha: 1.0)
-    ]
+        UIColor(red: 52/255, green: 152/255, blue: 219/255, alpha: 1.0),
+        UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1.0)
+        
+        ]
 }
-enum SwitchState: Int {
-    case red, yellow, green, blue
+enum SwitchState2: Int {
+    case red, yellow, green, blue, purple
 }
 
-
-class GameScene: SKScene {
+class LevelTwo: SKScene {
     
     var colorSwitch: SKSpriteNode!
-    var switchState = SwitchState.red
-    var currentColorIndex: Int?
+    var switchState2 = SwitchState2.red
+    var currentColorIndex2: Int?
     
-    let scoreLabel = SKLabelNode(text: "0")
-    var score = 0
+    let scoreLabel = SKLabelNode(text: "10")
+    var score = 10
     
     override func didMove(to view: SKView) {
         setupPhysics()
         layoutScene()
     }
     
-    func returnScore() -> Int{
-        return score
-    }
-    
     override func update(_ currentTime: TimeInterval) {
-        if score == 5 {
-            physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
-            let speedUp = SKLabelNode(text: "SPEED UP!")
-            speedUp.fontName = "AvenirNext-Bold"
-            speedUp.fontColor = UIColor.white
-            speedUp.fontSize = 60.0
-            speedUp.position = CGPoint(x: frame.midX, y: frame.midY + 150.0)
-            speedUp.zPosition = ZPositions.label
-            speedUp.run(SKAction.fadeIn(withDuration: 0.5))
-            addChild(speedUp)
-            speedUp.run(SKAction.fadeOut(withDuration: 0.5))
-        }
-        if score == 10 {
-            let switchLabel = SKLabelNode(text: "SWITCH!")
-            switchLabel.fontName = "AvenirNext-Bold"
-            switchLabel.fontColor = UIColor.white
-            switchLabel.fontSize = 60.0
-            switchLabel.position = CGPoint(x: frame.midX, y: frame.midY + 150.0)
-            switchLabel.zPosition = ZPositions.label
-            switchLabel.run(SKAction.fadeIn(withDuration: 0.5))
-            addChild(switchLabel)
-            switchLabel.run(SKAction.fadeOut(withDuration: 0.5))
-            let levelTwo = LevelTwo(size: self.view!.bounds.size)
-            self.view!.presentScene(levelTwo)
+
+        
+        if score > 20 {
+            let levelThree = LevelThree(size: self.view!.bounds.size)
+            self.view!.presentScene(levelThree)
         }
     }
     
     func setupPhysics(){
-        physicsWorld.gravity = CGVector(dx: 0.0, dy: -3.0)
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
         physicsWorld.contactDelegate = self
     }
     
     func layoutScene() {
-        backgroundColor = UIColor(red: 61/255, green: 66/255, blue: 71/255, alpha: 1.0)
+        backgroundColor = UIColor(red: 101/255, green: 62/255, blue: 80/255, alpha: 1.0)
         
-        colorSwitch = SKSpriteNode(imageNamed: "ColorCircle")
+        colorSwitch = SKSpriteNode(imageNamed: "ColorCircleLevel2")
         colorSwitch.size = CGSize(width: frame.size.width/3, height: frame.size.width/3)
         colorSwitch.position = CGPoint(x: frame.midX, y: frame.minY + colorSwitch.size.height)
         colorSwitch.zPosition = ZPositions.colorSwitch
@@ -100,9 +78,9 @@ class GameScene: SKScene {
     }
     
     func spawnBall(){
-        currentColorIndex = Int(arc4random_uniform(UInt32(4)))
+        currentColorIndex2 = Int(arc4random_uniform(UInt32(5)))
         
-        let ball = SKSpriteNode(texture: SKTexture(imageNamed: "ball"), color: PlayColors.colors[currentColorIndex!], size: CGSize(width: 30.0, height: 30.0))
+        let ball = SKSpriteNode(texture: SKTexture(imageNamed: "ball"), color: PlayColors2.colors[currentColorIndex2!], size: CGSize(width: 30.0, height: 30.0))
         ball.colorBlendFactor = 1.0
         ball.name = "Ball"
         ball.position = CGPoint(x: frame.midX, y: frame.maxY)
@@ -116,11 +94,11 @@ class GameScene: SKScene {
     }
     
     func turnWheel() {
-        colorSwitch.run(SKAction.rotate(byAngle: .pi/2, duration: 0.25))
-        if let newState = SwitchState(rawValue: switchState.rawValue + 1){
-            switchState = newState
+        colorSwitch.run(SKAction.rotate(byAngle: 1.25664, duration: 0.25))
+        if let newState = SwitchState2(rawValue: switchState2.rawValue + 1){
+            switchState2 = newState
         } else {
-            switchState = .red
+            switchState2 = .red
         }
     }
     
@@ -157,8 +135,7 @@ class GameScene: SKScene {
         turnWheel()
     }
 }
-
-extension GameScene: SKPhysicsContactDelegate {
+extension LevelTwo: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         
@@ -166,7 +143,7 @@ extension GameScene: SKPhysicsContactDelegate {
             if let ball = contact.bodyA.node?.name == "Ball" ?
                 contact.bodyA.node as? SKSpriteNode : contact.bodyB.node as?
                 SKSpriteNode {
-                if currentColorIndex == switchState.rawValue {
+                if currentColorIndex2 == switchState2.rawValue {
                     score += 1
                     updateScoreLabel()
                     ball.removeFromParent()
