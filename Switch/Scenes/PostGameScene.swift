@@ -29,12 +29,16 @@ class PostGameScene: SKScene {
         playButton = SKSpriteNode(imageNamed: "playAgainButton")
         playButton.size = CGSize(width: frame.size.width/1.5, height: frame.size.height/10)
         playButton.position = CGPoint(x: frame.midX, y: frame.midY - 150)
+        playButton.zPosition = ZPositions.playLabel
+        playButton.alpha = 0.8
         self.addChild(playButton)
         
         //add menu button
         menuButton = SKSpriteNode(imageNamed: "menuButton")
         menuButton.size = CGSize(width: frame.size.width/1.5, height: frame.size.height/10)
         menuButton.position = CGPoint(x: frame.midX, y: frame.midY - 250)
+        menuButton.zPosition = ZPositions.playLabel
+        menuButton.alpha = 0.8
         self.addChild(menuButton)
     }
     @objc func backgroundBalls(){
@@ -57,12 +61,34 @@ class PostGameScene: SKScene {
     }
     func addLabels(){
         
+        //Switch Logo
+        // Add "Color Switch" logo image
+        let innerLogo = SKSpriteNode(imageNamed: "switchLogoLabel")
+        innerLogo.size = CGSize(width: frame.size.width/1.8, height: frame.size.height/8)
+        innerLogo.position = CGPoint(x: frame.midX, y: frame.midY + 200)
+        innerLogo.zPosition = ZPositions.innerLogo
+        addChild(innerLogo)
+        
+        // Add color wheel image
+        let outterLogo = SKSpriteNode(imageNamed: "colorWheel800x800")
+        outterLogo.alpha = 0.8
+        outterLogo.size = CGSize(width: frame.size.width/3, height: frame.size.width/3)
+        outterLogo.position = CGPoint(x: frame.midX, y: frame.midY + 200)
+        outterLogo.zPosition = ZPositions.outterLogo
+        addChild(outterLogo)
+        
+        //animate color wheel
+        let rotate = SKAction.rotate(byAngle: .pi*2, duration: 1.5)
+        let sequence = SKAction.sequence([rotate])
+        outterLogo.run(SKAction.repeatForever(sequence))
+        
         //Game over label
-        let gameOverLabel = SKLabelNode(text: "Game Over!")
+        let gameOverLabel = SKLabelNode(text: "GAME OVER")
         gameOverLabel.fontName = "AvenirNext-Bold"
-        gameOverLabel.fontSize = 60.0
+        gameOverLabel.fontSize = 50.0
         gameOverLabel.fontColor = UIColor.white
-        gameOverLabel.position = CGPoint(x: frame.midX, y: frame.midY + 200.0)
+        gameOverLabel.position = CGPoint(x: frame.midX, y: frame.midY + 50.0)
+        gameOverLabel.zPosition = ZPositions.playLabel
         addChild(gameOverLabel)
         
         //recent score label
@@ -70,26 +96,40 @@ class PostGameScene: SKScene {
         recentScoreLabel.fontName = "AvenirNext-Bold"
         recentScoreLabel.fontSize = 60.0
         recentScoreLabel.fontColor = UIColor.white
-        recentScoreLabel.position = CGPoint(x: frame.midX, y: frame.midY)
+        recentScoreLabel.position = CGPoint(x: frame.midX, y: frame.midY - 50.0)
+        recentScoreLabel.zPosition = ZPositions.playLabel
         addChild(recentScoreLabel)
         
         //left star
         let leftStar = SKSpriteNode(imageNamed: "star")
-        leftStar.size = CGSize(width: frame.size.width/6, height: frame.size.width/6)
-        leftStar.position = CGPoint(x: frame.midX - 100.0, y: frame.midY + 25.0)
+        leftStar.size = CGSize(width: frame.size.width/8, height: frame.size.width/8)
+        leftStar.position = CGPoint(x: frame.midX - 100.0, y: frame.midY - 28.0 )
+        leftStar.zPosition = ZPositions.playLabel
         addChild(leftStar)
         
         //right star
         let rightStar = SKSpriteNode(imageNamed: "star")
-        rightStar.size = CGSize(width: frame.size.width/6, height: frame.size.width/6)
-        rightStar.position = CGPoint(x: frame.midX + 100.0, y: frame.midY + 25.0)
+        rightStar.size = CGSize(width: frame.size.width/8, height: frame.size.width/8)
+        rightStar.position = CGPoint(x: frame.midX + 100.0, y: frame.midY - 28.0)
+        rightStar.zPosition = ZPositions.playLabel
         addChild(rightStar)
         
         //animate stars
-        let rotate = SKAction.rotate(byAngle: .pi*2, duration: 1.5)
-        let sequence = SKAction.sequence([rotate])
-        leftStar.run(SKAction.repeatForever(sequence))
-        rightStar.run(SKAction.repeatForever(sequence))
+        let rotate2 = SKAction.rotate(byAngle: .pi*2, duration: 1.5)
+        let sequence2 = SKAction.sequence([rotate2])
+        leftStar.run(SKAction.repeatForever(sequence2))
+        rightStar.run(SKAction.repeatForever(sequence2))
+        let fadeOut = SKAction.fadeOut(withDuration: 1.5)
+        let fadeIn = SKAction.fadeIn(withDuration: 1.5)
+        let fadeSeq = SKAction.sequence([fadeOut, fadeIn])
+        
+    
+        let triStar = SKSpriteNode(imageNamed: "3Star")
+        triStar.size = CGSize(width: 160, height: 75)
+        triStar.position = CGPoint(x: frame.midX, y: frame.midY + 100.0)
+        triStar.zPosition = ZPositions.playLabel
+        triStar.run(SKAction.repeatForever(fadeSeq))
+       // addChild(triStar)
         
     }
     

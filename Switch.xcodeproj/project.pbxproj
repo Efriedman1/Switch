@@ -22,8 +22,9 @@
 		07E39CED20F821BF0080E696 /* LevelThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E39CEC20F821BF0080E696 /* LevelThree.swift */; };
 		07E39CEF20F823960080E696 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E39CEE20F823960080E696 /* MenuScene.swift */; };
 		07E39CF120F842420080E696 /* PostGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E39CF020F842420080E696 /* PostGameScene.swift */; };
-		07E39CF320F843FB0080E696 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07E39CF220F843FB0080E696 /* Explosion.sks */; };
 		07E39CF520F848D90080E696 /* CorrectColor.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07E39CF420F848D90080E696 /* CorrectColor.sks */; };
+		07E39D0120F916690080E696 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07E39CFF20F916690080E696 /* Explosion.sks */; };
+		07E39D0220F916690080E696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07E39D0020F916690080E696 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +66,10 @@
 		07E39CEC20F821BF0080E696 /* LevelThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelThree.swift; sourceTree = "<group>"; };
 		07E39CEE20F823960080E696 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		07E39CF020F842420080E696 /* PostGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGameScene.swift; sourceTree = "<group>"; };
-		07E39CF220F843FB0080E696 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Explosion.sks; path = "../../ColorSwitch/ColorSwitch/SpriteKit Scenes/Explosion.sks"; sourceTree = "<group>"; };
 		07E39CF420F848D90080E696 /* CorrectColor.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CorrectColor.sks; sourceTree = "<group>"; };
+		07E39CFB20F912A10080E696 /* WrongColor.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = WrongColor.sks; path = "../../../ColorSwitch/ColorSwitch/SpriteKit Scenes/WrongColor.sks"; sourceTree = "<group>"; };
+		07E39CFF20F916690080E696 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
+		07E39D0020F916690080E696 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,22 +120,12 @@
 		0722423B20F66D1A009A5161 /* Switch */ = {
 			isa = PBXGroup;
 			children = (
-				0722423C20F66D1A009A5161 /* AppDelegate.swift */,
-				0722423E20F66D1A009A5161 /* GameScene.sks */,
-				07E39CEA20F817370080E696 /* Settings.swift */,
-				0722424020F66D1A009A5161 /* Actions.sks */,
-				0722424220F66D1A009A5161 /* GameScene.swift */,
-				07E39CE820F8163A0080E696 /* LevelTwo.swift */,
-				07E39CEC20F821BF0080E696 /* LevelThree.swift */,
-				0722424420F66D1A009A5161 /* GameViewController.swift */,
-				0722424620F66D1A009A5161 /* Main.storyboard */,
-				0722424920F66D1D009A5161 /* Assets.xcassets */,
-				07E39CEE20F823960080E696 /* MenuScene.swift */,
-				07E39CF020F842420080E696 /* PostGameScene.swift */,
-				0722424B20F66D1D009A5161 /* LaunchScreen.storyboard */,
-				07E39CF220F843FB0080E696 /* Explosion.sks */,
-				07E39CF420F848D90080E696 /* CorrectColor.sks */,
 				0722424E20F66D1D009A5161 /* Info.plist */,
+				07E39CF820F912780080E696 /* Scenes */,
+				07E39CFD20F913320080E696 /* Storyboards */,
+				07E39CFC20F912FF0080E696 /* Controllers */,
+				07E39CF920F912870080E696 /* SpriteKit Scenes */,
+				0722424920F66D1D009A5161 /* Assets.xcassets */,
 			);
 			path = Switch;
 			sourceTree = "<group>";
@@ -153,6 +146,50 @@
 				0722426420F66D1D009A5161 /* Info.plist */,
 			);
 			path = SwitchUITests;
+			sourceTree = "<group>";
+		};
+		07E39CF820F912780080E696 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				07E39CEE20F823960080E696 /* MenuScene.swift */,
+				0722424220F66D1A009A5161 /* GameScene.swift */,
+				07E39CE820F8163A0080E696 /* LevelTwo.swift */,
+				07E39CEC20F821BF0080E696 /* LevelThree.swift */,
+				07E39CF020F842420080E696 /* PostGameScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		07E39CF920F912870080E696 /* SpriteKit Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				07E39CFB20F912A10080E696 /* WrongColor.sks */,
+				0722423E20F66D1A009A5161 /* GameScene.sks */,
+				0722424020F66D1A009A5161 /* Actions.sks */,
+				07E39CF420F848D90080E696 /* CorrectColor.sks */,
+				07E39CFF20F916690080E696 /* Explosion.sks */,
+				07E39D0020F916690080E696 /* Assets.xcassets */,
+			);
+			path = "SpriteKit Scenes";
+			sourceTree = "<group>";
+		};
+		07E39CFC20F912FF0080E696 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0722424420F66D1A009A5161 /* GameViewController.swift */,
+				0722423C20F66D1A009A5161 /* AppDelegate.swift */,
+				07E39CEA20F817370080E696 /* Settings.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		07E39CFD20F913320080E696 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				0722424620F66D1A009A5161 /* Main.storyboard */,
+				0722424B20F66D1D009A5161 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,8 +301,9 @@
 				0722424A20F66D1D009A5161 /* Assets.xcassets in Resources */,
 				0722424D20F66D1D009A5161 /* LaunchScreen.storyboard in Resources */,
 				07E39CF520F848D90080E696 /* CorrectColor.sks in Resources */,
+				07E39D0120F916690080E696 /* Explosion.sks in Resources */,
+				07E39D0220F916690080E696 /* Assets.xcassets in Resources */,
 				0722424120F66D1A009A5161 /* Actions.sks in Resources */,
-				07E39CF320F843FB0080E696 /* Explosion.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +511,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PT53JXM7XM;
 				INFOPLIST_FILE = Switch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.8;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -491,6 +530,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PT53JXM7XM;
 				INFOPLIST_FILE = Switch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.8;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
