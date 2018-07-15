@@ -31,11 +31,5 @@ enum ZPositions {
     
 }
 
-//FIRST SCENE BALL COLORS
-
-
-//SECOND SCENE BALL COLORS
-
-//THIRD SCENE BALL COLORS
 
 

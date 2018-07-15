@@ -29,7 +29,7 @@ class LevelTwo: SKScene {
     var switchState2 = SwitchState2.red
     var currentColorIndex2: Int?
     
-    let scoreLabel = SKLabelNode(text: "10")
+    let scoreLabel = SKLabelNode(text: "20")
     var score = 20
     
     override func didMove(to view: SKView) {
@@ -39,7 +39,7 @@ class LevelTwo: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         if score == 30 {
-            physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
+            physicsWorld.gravity = CGVector(dx: 0.0, dy: -4.0)
             let speedUp = SKLabelNode(text: "SPEED UP!")
             speedUp.fontName = "AvenirNext-Bold"
             speedUp.fontColor = UIColor.white
@@ -66,7 +66,7 @@ class LevelTwo: SKScene {
     }
     
     func setupPhysics(){
-        physicsWorld.gravity = CGVector(dx: 0.0, dy: -4.0)
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: -3.0)
         physicsWorld.contactDelegate = self
     }
     
@@ -140,9 +140,22 @@ class LevelTwo: SKScene {
     
     //Explosion when ball hits wrong color
     func explosion(ball:SKSpriteNode){
-        let explosion = SKEmitterNode(fileNamed: "Explosion")!
+        //Red
+        let explosion = SKEmitterNode(fileNamed: "ExplosionRed")!
         explosion.position = ball.position
         self.addChild(explosion)
+        //Blue
+        let explosion2 = SKEmitterNode(fileNamed: "ExplosionBlue")!
+        explosion2.position = ball.position
+        self.addChild(explosion2)
+        //Yellow
+        let explosion3 = SKEmitterNode(fileNamed: "ExplosionYellow")!
+        explosion3.position = ball.position
+        self.addChild(explosion3)
+        //Green
+        let explosion4 = SKEmitterNode(fileNamed: "ExplosionGreen")!
+        explosion4.position = ball.position
+        self.addChild(explosion4)
         ball.removeFromParent()
         self.run(SKAction.wait(forDuration: 1)){
             let postGameScene = PostGameScene(size: self.view!.bounds.size)
@@ -165,14 +178,18 @@ extension LevelTwo: SKPhysicsContactDelegate {
                 if currentColorIndex2 == switchState2.rawValue {
                     score += 1
                     updateScoreLabel()
+                    let generator = UIImpactFeedbackGenerator(style: .light)
+                    generator.impactOccurred()
                     ball.removeFromParent()
-                    collision(ball: ball)
+                    //collision(ball: ball)
                     self.spawnBall()
                     //ball.run(SKAction.fadeOut(withDuration: 0.25), completion: {
                     //  })
                 } else {
                     gameOver()
                     explosion(ball: ball)
+                    let generator = UIImpactFeedbackGenerator(style: .light)
+                    generator.impactOccurred()
                 }
             }
         }

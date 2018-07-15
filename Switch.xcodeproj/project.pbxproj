@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0711F93420FAF55200D20F9B /* ExplosionBlue.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0711F93320FAF55200D20F9B /* ExplosionBlue.sks */; };
+		0711F93C20FAF6FA00D20F9B /* ExplosionGreen.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0711F93A20FAF6FA00D20F9B /* ExplosionGreen.sks */; };
+		0711F93D20FAF6FA00D20F9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0711F93B20FAF6FA00D20F9B /* Assets.xcassets */; };
+		0711F93F20FAF70F00D20F9B /* ExplosionYellow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0711F93E20FAF70F00D20F9B /* ExplosionYellow.sks */; };
 		0722423D20F66D1A009A5161 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0722423C20F66D1A009A5161 /* AppDelegate.swift */; };
 		0722423F20F66D1A009A5161 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0722423E20F66D1A009A5161 /* GameScene.sks */; };
 		0722424120F66D1A009A5161 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0722424020F66D1A009A5161 /* Actions.sks */; };
@@ -23,7 +27,7 @@
 		07E39CEF20F823960080E696 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E39CEE20F823960080E696 /* MenuScene.swift */; };
 		07E39CF120F842420080E696 /* PostGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E39CF020F842420080E696 /* PostGameScene.swift */; };
 		07E39CF520F848D90080E696 /* CorrectColor.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07E39CF420F848D90080E696 /* CorrectColor.sks */; };
-		07E39D0120F916690080E696 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07E39CFF20F916690080E696 /* Explosion.sks */; };
+		07E39D0120F916690080E696 /* ExplosionRed.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07E39CFF20F916690080E696 /* ExplosionRed.sks */; };
 		07E39D0220F916690080E696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07E39D0020F916690080E696 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +49,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0711F93320FAF55200D20F9B /* ExplosionBlue.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExplosionBlue.sks; sourceTree = "<group>"; };
+		0711F93A20FAF6FA00D20F9B /* ExplosionGreen.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExplosionGreen.sks; sourceTree = "<group>"; };
+		0711F93B20FAF6FA00D20F9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0711F93E20FAF70F00D20F9B /* ExplosionYellow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExplosionYellow.sks; sourceTree = "<group>"; };
 		0722423920F66D1A009A5161 /* Switch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Switch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0722423C20F66D1A009A5161 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0722423E20F66D1A009A5161 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -68,7 +76,7 @@
 		07E39CF020F842420080E696 /* PostGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGameScene.swift; sourceTree = "<group>"; };
 		07E39CF420F848D90080E696 /* CorrectColor.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CorrectColor.sks; sourceTree = "<group>"; };
 		07E39CFB20F912A10080E696 /* WrongColor.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = WrongColor.sks; path = "../../../ColorSwitch/ColorSwitch/SpriteKit Scenes/WrongColor.sks"; sourceTree = "<group>"; };
-		07E39CFF20F916690080E696 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
+		07E39CFF20F916690080E696 /* ExplosionRed.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExplosionRed.sks; sourceTree = "<group>"; };
 		07E39D0020F916690080E696 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +105,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0711F93520FAF55800D20F9B /* Explosion */ = {
+			isa = PBXGroup;
+			children = (
+				07E39CFF20F916690080E696 /* ExplosionRed.sks */,
+				0711F93320FAF55200D20F9B /* ExplosionBlue.sks */,
+				0711F93A20FAF6FA00D20F9B /* ExplosionGreen.sks */,
+				0711F93E20FAF70F00D20F9B /* ExplosionYellow.sks */,
+				0711F93B20FAF6FA00D20F9B /* Assets.xcassets */,
+			);
+			path = Explosion;
+			sourceTree = "<group>";
+		};
 		0722423020F66D1A009A5161 = {
 			isa = PBXGroup;
 			children = (
@@ -167,7 +187,7 @@
 				0722423E20F66D1A009A5161 /* GameScene.sks */,
 				0722424020F66D1A009A5161 /* Actions.sks */,
 				07E39CF420F848D90080E696 /* CorrectColor.sks */,
-				07E39CFF20F916690080E696 /* Explosion.sks */,
+				0711F93520FAF55800D20F9B /* Explosion */,
 				07E39D0020F916690080E696 /* Assets.xcassets */,
 			);
 			path = "SpriteKit Scenes";
@@ -298,11 +318,15 @@
 			files = (
 				0722424820F66D1A009A5161 /* Main.storyboard in Resources */,
 				0722423F20F66D1A009A5161 /* GameScene.sks in Resources */,
+				0711F93D20FAF6FA00D20F9B /* Assets.xcassets in Resources */,
+				0711F93F20FAF70F00D20F9B /* ExplosionYellow.sks in Resources */,
 				0722424A20F66D1D009A5161 /* Assets.xcassets in Resources */,
+				0711F93C20FAF6FA00D20F9B /* ExplosionGreen.sks in Resources */,
 				0722424D20F66D1D009A5161 /* LaunchScreen.storyboard in Resources */,
 				07E39CF520F848D90080E696 /* CorrectColor.sks in Resources */,
-				07E39D0120F916690080E696 /* Explosion.sks in Resources */,
+				07E39D0120F916690080E696 /* ExplosionRed.sks in Resources */,
 				07E39D0220F916690080E696 /* Assets.xcassets in Resources */,
+				0711F93420FAF55200D20F9B /* ExplosionBlue.sks in Resources */,
 				0722424120F66D1A009A5161 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

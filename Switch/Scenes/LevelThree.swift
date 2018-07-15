@@ -29,7 +29,7 @@ class LevelThree: SKScene {
     var switchState3 = SwitchState3.red
     var currentColorIndex3: Int?
     
-    let scoreLabel = SKLabelNode(text: "0")
+    let scoreLabel = SKLabelNode(text: "40")
     var score = 40
     
     override func didMove(to view: SKView) {
@@ -39,7 +39,7 @@ class LevelThree: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         if score == 50 {
-        physicsWorld.gravity = CGVector(dx: 0.0, dy: -6.0)
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
         let speedUp = SKLabelNode(text: "SPEED UP!")
         speedUp.fontName = "AvenirNext-Bold"
         speedUp.fontColor = UIColor.white
@@ -53,7 +53,7 @@ class LevelThree: SKScene {
     }
     
     func setupPhysics(){
-        physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: -4.0)
         physicsWorld.contactDelegate = self
     }
     
@@ -127,9 +127,22 @@ class LevelThree: SKScene {
     
     //Explosion when ball hits wrong color
     func explosion(ball:SKSpriteNode){
-        let explosion = SKEmitterNode(fileNamed: "Explosion")!
+        //Red
+        let explosion = SKEmitterNode(fileNamed: "ExplosionRed")!
         explosion.position = ball.position
         self.addChild(explosion)
+        //Blue
+        let explosion2 = SKEmitterNode(fileNamed: "ExplosionBlue")!
+        explosion2.position = ball.position
+        self.addChild(explosion2)
+        //Yellow
+        let explosion3 = SKEmitterNode(fileNamed: "ExplosionYellow")!
+        explosion3.position = ball.position
+        self.addChild(explosion3)
+        //Green
+        let explosion4 = SKEmitterNode(fileNamed: "ExplosionGreen")!
+        explosion4.position = ball.position
+        self.addChild(explosion4)
         ball.removeFromParent()
         self.run(SKAction.wait(forDuration: 1)){
             let postGameScene = PostGameScene(size: self.view!.bounds.size)
@@ -152,6 +165,8 @@ extension LevelThree: SKPhysicsContactDelegate {
                 if currentColorIndex3 == switchState3.rawValue {
                     score += 1
                     updateScoreLabel()
+                    let generator = UIImpactFeedbackGenerator(style: .light)
+                    generator.impactOccurred()
                     ball.removeFromParent()
                     //collision(ball: ball)
                     self.spawnBall()
@@ -160,6 +175,8 @@ extension LevelThree: SKPhysicsContactDelegate {
                 } else {
                     gameOver()
                     explosion(ball: ball)
+                    let generator = UIImpactFeedbackGenerator(style: .light)
+                    generator.impactOccurred()
                 }
             }
         }

@@ -27,14 +27,6 @@ class MenuScene: SKScene {
     }
     
     func addLogo(){
-        // Add "Color Switch" logo image
-        let innerLogo = SKLabelNode(text: "SWITCH")
-        innerLogo.fontName = "AvenirNext-Bold"
-        innerLogo.fontSize = 75
-        innerLogo.fontColor = UIColor.white
-        innerLogo.position = CGPoint(x: frame.midX, y: frame.midY + 138.0)
-        innerLogo.zPosition = ZPositions.innerLogo
-        addChild(innerLogo)
         
         // Add color wheel image
         let outterLogo = SKSpriteNode(imageNamed: "colorWheel800x800")
@@ -44,6 +36,20 @@ class MenuScene: SKScene {
         outterLogo.zPosition = ZPositions.outterLogo
         addChild(outterLogo)
         
+        // Add "Switch" logo image
+       /* let innerLogo = SKLabelNode(text: "SWITCH")
+        innerLogo.fontName = "AvenirNext-Bold"
+        innerLogo.fontSize = 75
+        innerLogo.fontColor = UIColor.white
+        innerLogo.position = CGPoint(x: frame.midX, y: frame.midY + frame.size.height/4 - innerLogo.fontSize/2)
+        innerLogo.zPosition = ZPositions.innerLogo
+        addChild(innerLogo)*/
+        
+        let switchLogo = SKSpriteNode(imageNamed: "switchLogoLabel")
+        switchLogo.size = CGSize(width: frame.size.width/1.2, height: frame.size.height/6)
+        switchLogo.position = CGPoint(x: frame.midX, y: frame.midY + frame.size.height/4)
+        switchLogo.zPosition = ZPositions.innerLogo
+        addChild(switchLogo)
         //animate color wheel
         let rotate = SKAction.rotate(byAngle: .pi*2, duration: 1.5)
         let sequence = SKAction.sequence([rotate])
