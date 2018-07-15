@@ -28,9 +28,11 @@ class MenuScene: SKScene {
     
     func addLogo(){
         // Add "Color Switch" logo image
-        let innerLogo = SKSpriteNode(imageNamed: "switchLogoLabel")
-        innerLogo.size = CGSize(width: frame.size.width/1.2, height: frame.size.height/6)
-        innerLogo.position = CGPoint(x: frame.midX, y: frame.midY + frame.size.height/4)
+        let innerLogo = SKLabelNode(text: "SWITCH")
+        innerLogo.fontName = "AvenirNext-Bold"
+        innerLogo.fontSize = 75
+        innerLogo.fontColor = UIColor.white
+        innerLogo.position = CGPoint(x: frame.midX, y: frame.midY + 138.0)
         innerLogo.zPosition = ZPositions.innerLogo
         addChild(innerLogo)
         
