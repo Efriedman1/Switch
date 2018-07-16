@@ -91,6 +91,8 @@ class GameScene: SKScene {
         addChild(scoreLabel)
         
         spawnBall()
+        
+      
     }
     
     func updateScoreLabel(){
@@ -113,8 +115,7 @@ class GameScene: SKScene {
         addChild(ball)
     }
     
-    func turnWheel() {
-        
+    func turnWheelRight() {
         colorSwitch.run(SKAction.rotate(byAngle: .pi/2, duration: 0.25))
         if let newState = SwitchState(rawValue: switchState.rawValue + 1){
             switchState = newState
@@ -122,6 +123,17 @@ class GameScene: SKScene {
             switchState = .red
         }
     }
+    func turnWheelLeft() {
+        colorSwitch.run(SKAction.rotate(byAngle: -.pi/2, duration: 0.25))
+        if switchState.rawValue == 0 {
+            let newState = SwitchState(rawValue: switchState.rawValue + 3)
+            switchState = newState!
+        } else {
+            let newState = SwitchState(rawValue: switchState.rawValue - 1)
+            switchState = newState!
+        }
+    }
+    
     
     func gameOver(){
         UserDefaults.standard.set(score, forKey: "Recent Score")
@@ -167,9 +179,21 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        turnWheel()
+        let touch = touches.first!
+        let location = touch.location(in: self)
+        var rightSide: Bool = false
+        var leftSide: Bool = false
+        if (location.x > 180) {
+            rightSide = true
+            turnWheelRight()
+            print("rightSide touched")
+        } else if (location.x < 180){
+            leftSide = true
+            turnWheelLeft()
+            print("leftSide touched")
+            }
+        }
     }
-}
 
 extension GameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
@@ -185,10 +209,7 @@ extension GameScene: SKPhysicsContactDelegate {
                     let generator = UIImpactFeedbackGenerator(style: .light)
                     generator.impactOccurred()
                     ball.removeFromParent()
-                 //   collision(ball: ball)
                     self.spawnBall()
-                    //ball.run(SKAction.fadeOut(withDuration: 0.25), completion: {
-                    //  })
                 } else {
                     gameOver()
                     explosion(ball: ball)

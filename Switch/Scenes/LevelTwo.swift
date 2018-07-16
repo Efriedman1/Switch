@@ -112,12 +112,22 @@ class LevelTwo: SKScene {
         addChild(ball)
     }
     
-    func turnWheel() {
+    func turnWheelRight() {
         colorSwitch.run(SKAction.rotate(byAngle: 1.25664, duration: 0.25))
         if let newState = SwitchState2(rawValue: switchState2.rawValue + 1){
             switchState2 = newState
         } else {
             switchState2 = .red
+        }
+    }
+    func turnWheelLeft() {
+        colorSwitch.run(SKAction.rotate(byAngle: -1.25664, duration: 0.25))
+        if switchState2.rawValue == 0 {
+            let newState = SwitchState2(rawValue: switchState2.rawValue + 4)
+            switchState2 = newState!
+        } else {
+            let newState = SwitchState2(rawValue: switchState2.rawValue - 1)
+            switchState2 = newState!
         }
     }
     
@@ -164,7 +174,19 @@ class LevelTwo: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        turnWheel()
+        let touch = touches.first!
+        let location = touch.location(in: self)
+        var rightSide: Bool = false
+        var leftSide: Bool = false
+        if (location.x > 180) {
+            rightSide = true
+            turnWheelRight()
+            print("rightSide touched")
+        } else if (location.x < 180){
+            leftSide = true
+            turnWheelLeft()
+            print("leftSide touched")
+        }
     }
 }
 extension LevelTwo: SKPhysicsContactDelegate {
