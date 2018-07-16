@@ -52,15 +52,6 @@ class GameScene: SKScene {
             speedUp.run(SKAction.fadeOut(withDuration: 0.5))
         }
         if score == 20 {
-            let switchLabel = SKLabelNode(text: "SWITCH!")
-            switchLabel.fontName = "AvenirNext-Bold"
-            switchLabel.fontColor = UIColor.white
-            switchLabel.fontSize = 60.0
-            switchLabel.position = CGPoint(x: frame.midX, y: frame.midY + 150.0)
-            switchLabel.zPosition = ZPositions.label
-            switchLabel.run(SKAction.fadeIn(withDuration: 0.5))
-            addChild(switchLabel)
-            switchLabel.run(SKAction.fadeOut(withDuration: 0.5))
             let levelTwo = LevelTwo(size: self.view!.bounds.size)
             self.view!.presentScene(levelTwo)
         }

@@ -27,18 +27,18 @@ class PostGameScene: SKScene {
         
         //add play button
         playButton = SKSpriteNode(imageNamed: "playAgainButton")
-        playButton.size = CGSize(width: frame.size.width/2.2, height: frame.size.height/10)
-        playButton.position = CGPoint(x: frame.midX, y: frame.midY - 150)
+        playButton.size = CGSize(width: frame.size.width/2.5, height: frame.size.height/10)
+        playButton.position = CGPoint(x: frame.midX, y: frame.midY - 200)
         playButton.zPosition = ZPositions.playLabel
-        playButton.alpha = 0.8
+        playButton.alpha = 1.0
         self.addChild(playButton)
         
         //add menu button
         menuButton = SKSpriteNode(imageNamed: "menuButton")
-        menuButton.size = CGSize(width: 80, height: frame.size.height/11)
-        menuButton.position = CGPoint(x: frame.midX, y: frame.midY - 250)
-        menuButton.zPosition = ZPositions.playLabel
-        menuButton.alpha = 0.7
+        menuButton.size = CGSize(width: frame.size.width/2.5, height: frame.size.height/10)
+        menuButton.position = CGPoint(x: frame.midX, y: frame.midY - 275)
+        menuButton.zPosition = ZPositions.backgroundBall
+        menuButton.alpha = 0.8
         self.addChild(menuButton)
     }
     @objc func backgroundBalls(){
@@ -66,7 +66,7 @@ class PostGameScene: SKScene {
         let innerLogo = SKSpriteNode(imageNamed: "switchLogoLabel")
         //innerLogo.size = CGSize(width: frame.size.width/1.8, height: frame.size.height/8)
         innerLogo.size = CGSize(width: frame.size.width/1.2, height: frame.size.height/6)
-        innerLogo.position = CGPoint(x: frame.midX, y: frame.midY + 200)
+        innerLogo.position = CGPoint(x: frame.midX, y: frame.midY + 225)
         innerLogo.zPosition = ZPositions.innerLogo
         addChild(innerLogo)
         
@@ -75,7 +75,7 @@ class PostGameScene: SKScene {
         outterLogo.alpha = 0.8
         //outterLogo.size = CGSize(width: frame.size.width/3, height: frame.size.width/3)
         outterLogo.size = CGSize(width: frame.size.width/2, height: frame.size.width/2)
-        outterLogo.position = CGPoint(x: frame.midX, y: frame.midY + 200)
+        outterLogo.position = CGPoint(x: frame.midX, y: frame.midY + 225)
         outterLogo.zPosition = ZPositions.outterLogo
         addChild(outterLogo)
         
@@ -90,18 +90,9 @@ class PostGameScene: SKScene {
         gameOverLabel.fontSize = 40
         gameOverLabel.alpha = 0.8
         gameOverLabel.fontColor = UIColor.white
-        gameOverLabel.position = CGPoint(x: frame.midX, y: frame.midY + 55.0)
+        gameOverLabel.position = CGPoint(x: frame.midX, y: frame.midY + 80.0)
         gameOverLabel.zPosition = ZPositions.playLabel
         addChild(gameOverLabel)
-        
-        //recent score label
-        /*let recentScoreLabel = SKLabelNode(text: "\(UserDefaults.standard.integer(forKey: "Recent Score"))")
-        recentScoreLabel.fontName = "AvenirNext-Bold"
-        recentScoreLabel.fontSize = 60.0
-        recentScoreLabel.fontColor = UIColor.white
-        recentScoreLabel.position = CGPoint(x: frame.midX, y: frame.midY - 50.0)
-        recentScoreLabel.zPosition = ZPositions.playLabel
-        addChild(recentScoreLabel)*/
         
         let highScoreLabel = SKLabelNode(text: "High Score: " + "\(UserDefaults.standard.integer(forKey: "Highscore"))")
         highScoreLabel.fontName = "AvenirNext-Bold"
@@ -115,11 +106,11 @@ class PostGameScene: SKScene {
         recentScoreLabel.fontName = "AvenirNext-Bold"
         recentScoreLabel.fontSize = 30.0
         recentScoreLabel.fontColor = UIColor.white
-        recentScoreLabel.position = CGPoint(x: frame.midX, y: highScoreLabel.position.y - recentScoreLabel.frame.size.height*2)
+        recentScoreLabel.position = CGPoint(x: frame.midX, y: highScoreLabel.position.y - recentScoreLabel.frame.size.height*2 - 10.0)
         recentScoreLabel.zPosition = ZPositions.highScoreLabel
         addChild(recentScoreLabel)
         
-        //left star
+       /* //left star
         let leftStar = SKSpriteNode(imageNamed: "star")
         leftStar.size = CGSize(width: frame.size.width/8, height: frame.size.width/8)
         leftStar.position = CGPoint(x: frame.midX - 100.0, y: frame.midY - 28.0 )
@@ -140,7 +131,7 @@ class PostGameScene: SKScene {
         rightStar.run(SKAction.repeatForever(sequence2))
         let fadeOut = SKAction.fadeOut(withDuration: 1.5)
         let fadeIn = SKAction.fadeIn(withDuration: 1.5)
-        //let fadeSeq = SKAction.sequence([fadeOut, fadeIn])
+        //let fadeSeq = SKAction.sequence([fadeOut, fadeIn]) */
         
         
     }

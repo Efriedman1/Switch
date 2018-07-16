@@ -75,7 +75,6 @@
 		07E39CEE20F823960080E696 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		07E39CF020F842420080E696 /* PostGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGameScene.swift; sourceTree = "<group>"; };
 		07E39CF420F848D90080E696 /* CorrectColor.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CorrectColor.sks; sourceTree = "<group>"; };
-		07E39CFB20F912A10080E696 /* WrongColor.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = WrongColor.sks; path = "../../../ColorSwitch/ColorSwitch/SpriteKit Scenes/WrongColor.sks"; sourceTree = "<group>"; };
 		07E39CFF20F916690080E696 /* ExplosionRed.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExplosionRed.sks; sourceTree = "<group>"; };
 		07E39D0020F916690080E696 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,7 +182,6 @@
 		07E39CF920F912870080E696 /* SpriteKit Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				07E39CFB20F912A10080E696 /* WrongColor.sks */,
 				0722423E20F66D1A009A5161 /* GameScene.sks */,
 				0722424020F66D1A009A5161 /* Actions.sks */,
 				07E39CF420F848D90080E696 /* CorrectColor.sks */,
