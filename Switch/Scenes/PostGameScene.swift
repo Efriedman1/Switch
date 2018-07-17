@@ -37,7 +37,7 @@ class PostGameScene: SKScene {
         menuButton = SKSpriteNode(imageNamed: "menuButton")
         menuButton.size = CGSize(width: frame.size.width/2.2, height: frame.size.height/10)
         menuButton.position = CGPoint(x: frame.midX, y: frame.midY - 275)
-        menuButton.zPosition = ZPositions.backgroundBall
+        menuButton.zPosition = ZPositions.outterLogo
         menuButton.alpha = 0.8
         self.addChild(menuButton)
     }
