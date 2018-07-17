@@ -51,7 +51,7 @@ class LevelThree: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         if score == 50 {
-        physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: -7.0)
         let speedUp = SKLabelNode(text: "SPEED UP!")
         speedUp.fontName = "AvenirNext-Bold"
         speedUp.fontColor = UIColor.white
@@ -61,11 +61,66 @@ class LevelThree: SKScene {
         speedUp.run(SKAction.fadeIn(withDuration: 0.5))
         addChild(speedUp)
         speedUp.run(SKAction.fadeOut(withDuration: 0.5))
+        } else if score == 60 {
+            physicsWorld.gravity = CGVector(dx: 0.0, dy: -7.5)
+            let speedUp = SKLabelNode(text: "SPEED UP!")
+            speedUp.fontName = "AvenirNext-Bold"
+            speedUp.fontColor = UIColor.white
+            speedUp.fontSize = 60.0
+            speedUp.position = CGPoint(x: frame.midX, y: frame.midY + 150.0)
+            speedUp.zPosition = ZPositions.label
+            speedUp.run(SKAction.fadeIn(withDuration: 0.5))
+            addChild(speedUp)
+            speedUp.run(SKAction.fadeOut(withDuration: 0.5))
+        } else if score == 70 {
+            physicsWorld.gravity = CGVector(dx: 0.0, dy: -8.0)
+            let speedUp = SKLabelNode(text: "SPEED UP!")
+            speedUp.fontName = "AvenirNext-Bold"
+            speedUp.fontColor = UIColor.white
+            speedUp.fontSize = 60.0
+            speedUp.position = CGPoint(x: frame.midX, y: frame.midY + 150.0)
+            speedUp.zPosition = ZPositions.label
+            speedUp.run(SKAction.fadeIn(withDuration: 0.5))
+            addChild(speedUp)
+            speedUp.run(SKAction.fadeOut(withDuration: 0.5))
+        } else if score == 80 {
+            physicsWorld.gravity = CGVector(dx: 0.0, dy: -8.5)
+            let speedUp = SKLabelNode(text: "SPEED UP!")
+            speedUp.fontName = "AvenirNext-Bold"
+            speedUp.fontColor = UIColor.white
+            speedUp.fontSize = 60.0
+            speedUp.position = CGPoint(x: frame.midX, y: frame.midY + 150.0)
+            speedUp.zPosition = ZPositions.label
+            speedUp.run(SKAction.fadeIn(withDuration: 0.5))
+            addChild(speedUp)
+            speedUp.run(SKAction.fadeOut(withDuration: 0.5))
+        } else if score == 90 {
+            physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.0)
+            let speedUp = SKLabelNode(text: "SPEED UP!")
+            speedUp.fontName = "AvenirNext-Bold"
+            speedUp.fontColor = UIColor.white
+            speedUp.fontSize = 60.0
+            speedUp.position = CGPoint(x: frame.midX, y: frame.midY + 150.0)
+            speedUp.zPosition = ZPositions.label
+            speedUp.run(SKAction.fadeIn(withDuration: 0.5))
+            addChild(speedUp)
+            speedUp.run(SKAction.fadeOut(withDuration: 0.5))
+        } else if score == 100{
+            physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.8)
+            let speedUp = SKLabelNode(text: "SPEED UP!")
+            speedUp.fontName = "AvenirNext-Bold"
+            speedUp.fontColor = UIColor.white
+            speedUp.fontSize = 60.0
+            speedUp.position = CGPoint(x: frame.midX, y: frame.midY + 150.0)
+            speedUp.zPosition = ZPositions.label
+            speedUp.run(SKAction.fadeIn(withDuration: 0.5))
+            addChild(speedUp)
+            speedUp.run(SKAction.fadeOut(withDuration: 0.5))
         }
     }
     
     func setupPhysics(){
-        physicsWorld.gravity = CGVector(dx: 0.0, dy: -4.0)
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: -6.0)
         physicsWorld.contactDelegate = self
     }
     

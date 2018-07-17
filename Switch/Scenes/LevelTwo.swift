@@ -51,7 +51,7 @@ class LevelTwo: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         if score == 30 {
-            physicsWorld.gravity = CGVector(dx: 0.0, dy: -4.0)
+            physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.5)
             let speedUp = SKLabelNode(text: "SPEED UP!")
             speedUp.fontName = "AvenirNext-Bold"
             speedUp.fontColor = UIColor.white
@@ -69,7 +69,7 @@ class LevelTwo: SKScene {
     }
     
     func setupPhysics(){
-        physicsWorld.gravity = CGVector(dx: 0.0, dy: -3.0)
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: -4.5)
         physicsWorld.contactDelegate = self
     }
     
