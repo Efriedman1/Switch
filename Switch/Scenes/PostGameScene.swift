@@ -27,7 +27,7 @@ class PostGameScene: SKScene {
         
         //add play button
         playButton = SKSpriteNode(imageNamed: "playAgainButton")
-        playButton.size = CGSize(width: frame.size.width/2.5, height: frame.size.height/10)
+        playButton.size = CGSize(width: frame.size.width/2.2, height: frame.size.height/10)
         playButton.position = CGPoint(x: frame.midX, y: frame.midY - 200)
         playButton.zPosition = ZPositions.playLabel
         playButton.alpha = 1.0
@@ -35,7 +35,7 @@ class PostGameScene: SKScene {
         
         //add menu button
         menuButton = SKSpriteNode(imageNamed: "menuButton")
-        menuButton.size = CGSize(width: frame.size.width/2.5, height: frame.size.height/10)
+        menuButton.size = CGSize(width: frame.size.width/2.2, height: frame.size.height/10)
         menuButton.position = CGPoint(x: frame.midX, y: frame.midY - 275)
         menuButton.zPosition = ZPositions.backgroundBall
         menuButton.alpha = 0.8

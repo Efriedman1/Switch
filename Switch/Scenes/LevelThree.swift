@@ -32,6 +32,9 @@ class LevelThree: SKScene {
     let scoreLabel = SKLabelNode(text: "40")
     var score = 40
     
+    var rightSide: Bool = false
+    var leftSide: Bool = false
+    
     override func didMove(to view: SKView) {
         let switchLabel = SKLabelNode(text: "SWITCH!")
         switchLabel.fontName = "AvenirNext-Bold"
@@ -172,8 +175,6 @@ class LevelThree: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
         let location = touch.location(in: self)
-        var rightSide: Bool = false
-        var leftSide: Bool = false
         if (location.x > 180) {
             rightSide = true
             turnWheelRight()

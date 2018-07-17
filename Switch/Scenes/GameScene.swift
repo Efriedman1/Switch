@@ -32,6 +32,9 @@ class GameScene: SKScene {
     let scoreLabel = SKLabelNode(text: "0")
     var score = 0
     
+    var rightSide: Bool = false
+    var leftSide: Bool = false
+    
     override func didMove(to view: SKView) {
         setupPhysics()
         layoutScene()
@@ -172,8 +175,6 @@ class GameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
         let location = touch.location(in: self)
-        var rightSide: Bool = false
-        var leftSide: Bool = false
         if (location.x > 180) {
             rightSide = true
             turnWheelRight()
