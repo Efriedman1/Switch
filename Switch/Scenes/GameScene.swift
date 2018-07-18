@@ -38,7 +38,7 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         setupPhysics()
         layoutScene()
-        //self.view?.showsPhysics = true
+        // self.view?.showsPhysics = true
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -138,8 +138,9 @@ class GameScene: SKScene {
     
     //Collision when ball matches correct color
     func collision(ball:SKSpriteNode){
-        let collision = SKEmitterNode(fileNamed: "CorrectColor")!
+        let collision = SKEmitterNode(fileNamed: "Collision")!
         collision.position = ball.position
+        collision.zPosition = ZPositions.collision
         self.addChild(collision)
         self.run(SKAction.wait(forDuration: 2)) {
             collision.removeFromParent()
@@ -189,27 +190,33 @@ class GameScene: SKScene {
 
 extension GameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
-        let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         
-        if contactMask == PhysicsCategories.ballCategory | PhysicsCategories.switchCategory {
-            if let ball = contact.bodyA.node?.name == "Ball" ?
-                contact.bodyA.node as? SKSpriteNode : contact.bodyB.node as?
-                SKSpriteNode {
-                if currentColorIndex == switchState.rawValue {
-                    score += 1
-                    updateScoreLabel()
-                    let generator = UIImpactFeedbackGenerator(style: .light)
-                    generator.impactOccurred()
-                    ball.removeFromParent()
-                    self.spawnBall()
-                } else {
-                    gameOver()
-                    explosion(ball: ball)
-                    let generator2 = UIImpactFeedbackGenerator(style: .heavy)
-                    generator2.impactOccurred()
-                }
-            }
+        var ball: Ball
+        var otherNode: SKSpriteNode //not sure what this other node is by looking at your code
+        
+        if(contact.bodyA.name == "ball"){
+            ball = contact.bodyA.node! as! Ball
+            otherNode = contact.bodyB.node! as! SKSpriteNode
+        }
+        else{
+            otherNode = contact.bodyA.node! as! SKSpriteNode
+            ball = contact.bodyB.node! as! Ball
         }
         
+        if ball.currentColorIndex == switchState.rawValue {
+            
+            score += 1
+            updateScoreLabel()
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.impactOccurred()
+            ball.removeFromParent()
+            self.spawnBall()
+        } else {
+            gameOver()
+            explosion(ball: ball)
+            let generator2 = UIImpactFeedbackGenerator(style: .heavy)
+            generator2.impactOccurred()
+        }
     }
+}
 }

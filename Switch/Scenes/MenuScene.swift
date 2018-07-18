@@ -22,8 +22,8 @@ class MenuScene: SKScene {
         backgroundColor = UIColor(red: 61/255, green: 66/255, blue: 71/255, alpha: 1.0)
         addLogo()
         addLabels()
-        backgroundBalls()
-        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(backgroundBalls), userInfo: nil, repeats: true)
+        //backgroundBalls()
+        //timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(backgroundBalls), userInfo: nil, repeats: true)
     }
     
     func addLogo(){
