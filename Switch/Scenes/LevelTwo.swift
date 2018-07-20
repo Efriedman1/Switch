@@ -177,16 +177,13 @@ class LevelTwo: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first!
-        let location = touch.location(in: self)
-        if (location.x > 180) {
-            rightSide = true
-            turnWheelRight()
-            print("rightSide touched")
-        } else if (location.x < 180){
-            leftSide = true
+        let touch:UITouch = (touches.first as UITouch?)!
+        let touchLocation = touch.location(in: self)
+        
+        if touchLocation.x < self.frame.size.width / 2 {
             turnWheelLeft()
-            print("leftSide touched")
+        }else{
+            turnWheelRight()
         }
     }
 }

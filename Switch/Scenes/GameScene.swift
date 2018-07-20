@@ -26,6 +26,8 @@ enum SwitchState: Int {
 class GameScene: SKScene {
     
     var colorSwitch: SKSpriteNode!
+    var playButton: SKSpriteNode!
+    var ball: SKSpriteNode!
     var switchState = SwitchState.red
     var currentColorIndex: Int?
     
@@ -35,10 +37,10 @@ class GameScene: SKScene {
     var rightSide: Bool = false
     var leftSide: Bool = false
     
+    
     override func didMove(to view: SKView) {
         setupPhysics()
         layoutScene()
-        // self.view?.showsPhysics = true
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -53,6 +55,7 @@ class GameScene: SKScene {
             speedUp.run(SKAction.fadeIn(withDuration: 0.5))
             addChild(speedUp)
             speedUp.run(SKAction.fadeOut(withDuration: 0.5))
+        
         }
         if score == 20 {
             let levelTwo = LevelTwo(size: self.view!.bounds.size)
@@ -67,6 +70,10 @@ class GameScene: SKScene {
     
     func layoutScene() {
         backgroundColor = UIColor(red: 61/255, green: 66/255, blue: 71/255, alpha: 1.0)
+        
+        playButton = SKSpriteNode(imageNamed: "playButton")
+        playButton.size = CGSize(width: 100, height: 100)
+        playButton.position = CGPoint(x: frame.midX, y: frame.midY)
         
         colorSwitch = SKSpriteNode(imageNamed: "ColorCircle")
         colorSwitch.size = CGSize(width: frame.size.width/3, height: frame.size.width/3)
@@ -85,7 +92,6 @@ class GameScene: SKScene {
         addChild(scoreLabel)
         
         spawnBall()
-        
       
     }
     
@@ -96,7 +102,7 @@ class GameScene: SKScene {
     func spawnBall(){
         currentColorIndex = Int(arc4random_uniform(UInt32(4)))
         
-        let ball = SKSpriteNode(texture: SKTexture(imageNamed: "ball"), color: PlayColors.colors[currentColorIndex!], size: CGSize(width: 20.0, height: 20.0))
+        ball = SKSpriteNode(texture: SKTexture(imageNamed: "ball"), color: PlayColors.colors[currentColorIndex!], size: CGSize(width: 20.0, height: 20.0))
         ball.colorBlendFactor = 1.0
         ball.name = "Ball"
         ball.position = CGPoint(x: frame.midX, y: frame.maxY)
@@ -174,49 +180,46 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first!
-        let location = touch.location(in: self)
-        if (location.x > 180) {
-            rightSide = true
-            turnWheelRight()
-            print("rightSide touched")
-        } else if (location.x < 180){
-            leftSide = true
+        let touch:UITouch = (touches.first as UITouch?)!
+        let touchLocation = touch.location(in: self)
+        
+        if touchLocation.x < self.frame.size.width / 2 {
             turnWheelLeft()
-            print("leftSide touched")
-            }
-        }
-    }
-
-extension GameScene: SKPhysicsContactDelegate {
-    func didBegin(_ contact: SKPhysicsContact) {
-        
-        var ball: Ball
-        var otherNode: SKSpriteNode //not sure what this other node is by looking at your code
-        
-        if(contact.bodyA.name == "ball"){
-            ball = contact.bodyA.node! as! Ball
-            otherNode = contact.bodyB.node! as! SKSpriteNode
-        }
-        else{
-            otherNode = contact.bodyA.node! as! SKSpriteNode
-            ball = contact.bodyB.node! as! Ball
-        }
-        
-        if ball.currentColorIndex == switchState.rawValue {
-            
-            score += 1
-            updateScoreLabel()
-            let generator = UIImpactFeedbackGenerator(style: .light)
-            generator.impactOccurred()
-            ball.removeFromParent()
-            self.spawnBall()
-        } else {
-            gameOver()
-            explosion(ball: ball)
-            let generator2 = UIImpactFeedbackGenerator(style: .heavy)
-            generator2.impactOccurred()
+        }else{
+            turnWheelRight()
         }
     }
 }
+    
+//    func pauseGame() {
+//        self.isPaused = true
+//        self.physicsWorld.speed = 0
+//        self.speed = 0.0
+//        self.scene?.view?.isPaused = true
+//    }
+extension GameScene: SKPhysicsContactDelegate {
+    func didBegin(_ contact: SKPhysicsContact) {
+        let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        
+        if contactMask == PhysicsCategories.ballCategory | PhysicsCategories.switchCategory {
+            if let ball = contact.bodyA.node?.name == "Ball" ?
+                contact.bodyA.node as? SKSpriteNode : contact.bodyB.node as?
+                SKSpriteNode {
+                if currentColorIndex == switchState.rawValue {
+                    score += 1
+                    updateScoreLabel()
+                    let generator = UIImpactFeedbackGenerator(style: .light)
+                    //collision(ball: ball)
+                    generator.impactOccurred()
+                    ball.removeFromParent()
+                    self.spawnBall()
+                } else {
+                    gameOver()
+                    explosion(ball: ball)
+                    let generator2 = UIImpactFeedbackGenerator(style: .heavy)
+                    generator2.impactOccurred()
+                }
+            }
+        }
+    }
 }
